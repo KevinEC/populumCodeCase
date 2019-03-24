@@ -1,0 +1,52 @@
+$line-height: 20px;
+
+.container{
+	display: flex;
+	flex-flow: column;
+	width: 100%;
+}
+.axisWrapper{
+	display: flex;
+	flex-flow: column;
+}
+.axis{
+	height: 1px;
+	background-color: grey;
+	width: 100%;
+	display: block;
+	position: relative;
+}
+.lines{
+	display: flex;
+	justify-content: space-between;
+	margin-top: -($line-height/2);
+}
+.line{
+	border-right: 1px solid grey;
+	height: $line-height;
+	display: block;
+}
+.lineNum{
+	display: block;
+	position: absolute;
+	margin-top: -20px;
+	font-size: 10px;
+	margin-left: -5px;
+}
+.line:first-child .lineNum{
+	margin-left: 0px;
+}
+.line:last-child .lineNum{
+	margin-left: -15px; // cuz this one got three numbers
+}
+/* distritbute 6 elements to get the right separation but hide the fist and the last */
+.line:first-child, .line:last-child{
+	border-right-color: transparent;
+}
+
+.lists{
+	display: flex;
+}
+.list{
+	flex: 1 1 auto;
+}

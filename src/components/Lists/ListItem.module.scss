@@ -1,0 +1,56 @@
+@import '../../variables.scss';
+
+.container{
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+
+	padding: 10px;
+	margin: 10px;
+	border: 1px solid $grey;
+	border-radius: 5px;
+	background-color: white;
+}
+.null{
+	background-color: $grey !important;
+}
+.null *{
+	color: lighten($fontBlack, 25%) !important;
+}
+.texts{
+	display: flex;
+	flex-flow: column;
+}
+.name{
+	margin: 0;
+	font-size: 14px;
+	font-weight: 600;
+}
+.employees{
+	display: flex;
+	flex-flow: row nowrap;
+	font-size: 12px;
+}
+.employees span{
+	padding-right: 4px;
+}
+.employees h4{
+	margin: 0;
+}
+
+.score{
+	display: flex;
+	align-items: flex-end;
+	justify-content: flex-end;
+}
+.index{
+	font-size: 30px;
+	font-weight: 300;
+	margin: 0;
+	margin-bottom: -4px;
+}
+.arrow{
+	width: 25%;
+	height: auto;
+	object-fit: contain;
+}

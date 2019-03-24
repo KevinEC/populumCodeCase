@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
+@import "./global.scss";
+@import "./variables.scss";
+
+html,body,h1,h2,h3,h4,h5,h6,p,a,span{
+  font-family: 'Roboto';
+  color: $fontBlack;
+}
+
+body{
+	background-color: #fff;
+}
