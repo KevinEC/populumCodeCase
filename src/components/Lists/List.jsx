@@ -17,7 +17,7 @@ class List extends Component {
 	}
 
 	sortList(key){
-		this.props.data.sort(function (a, b) {
+		this.props.data.sort(function (b, a) {
 			let keyA = a[key];
 			let keyB = b[key];
 

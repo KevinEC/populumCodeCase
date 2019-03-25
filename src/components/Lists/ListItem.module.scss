@@ -1,15 +1,23 @@
 @import '../../variables.scss';
 
+$radius: 5px;
+
 .container{
 	display: flex;
+	flex-flow: row wrap;
 	align-items: flex-end;
 	justify-content: space-between;
 
+	border: 1px solid $grey;
+	border-radius: $radius;
+
 	padding: 10px;
 	margin: 10px;
-	border: 1px solid $grey;
-	border-radius: 5px;
-	background-color: white;
+
+	transition: all 0.1s ease-out;
+}
+.container:hover{
+	cursor: pointer;
 }
 .null{
 	background-color: $grey !important;
@@ -49,8 +57,61 @@
 	margin: 0;
 	margin-bottom: -4px;
 }
+.indexChange{
+	width: fit-content;
+	display: flex;
+	align-items: flex-end;
+}
+.indexChange h4{
+	margin: 0;
+	font-weight: 400;
+	font-size: 14px;
+	display: none;
+}	
 .arrow{
-	width: 25%;
+	width: 25px;
 	height: auto;
 	object-fit: contain;
+}
+.indexChangeNull{
+	display: none !important;
+}
+
+/* expanded styles */
+.expanded{
+	flex-flow: column wrap;
+	align-items:flex-start;
+	justify-content: flex-start;
+}
+
+.expanded .score{
+	margin: 10px auto;
+}
+
+.expanded .indexChange{
+	align-items: center;
+}
+
+.expanded .arrow{
+	width: 20px;
+}
+
+.expanded .indexChange h4{
+	display: block;
+}
+
+.expanded .index{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	width: 80px;
+	height: 80px;
+
+	color: white;
+
+	margin: 5px;
+
+	border-radius: 100%;
+	background-color: lightgreen;
 }
