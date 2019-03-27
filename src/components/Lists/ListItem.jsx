@@ -21,6 +21,7 @@ class ListItem extends Component {
 	  this.toggleView = this.toggleView.bind(this);
 	  this.setNotification = this.setNotification.bind(this);
 	  this.calcColor = this.calcColor.bind(this);
+	  this.rgb2hex = this.rgb2hex.bind(this);
 
 	}
 
@@ -34,16 +35,24 @@ class ListItem extends Component {
 		let expanded = this.state.expanded;
 
 		let changeScale = (Math.abs(this.props.indexChange)/ 200 ) * 10;
+		let indexRgb = this.calcColor(!expanded, this.props.index/100 );
+		let indexHex = this.rgb2hex(indexRgb);
+
+		console.log("rgb", indexRgb);
+		console.log("hex", indexHex);
 
 		if(expanded) {
 			this.setState({
 				viewStyle: "",
-				indexColor: {backgroundColor: this.calcColor(!expanded, this.props.index/100 )}
+	
+				indexBg: { backgroundImage: `none` },
+				indexColor: {backgroundColor: indexRgb }
 			}); 
 		} else {
 			this.setState({
 				viewStyle: styles.expanded,
-				indexColor: {backgroundColor: this.calcColor(!expanded, this.props.index/100 )}
+				indexBg: { backgroundImage: `url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23` + indexHex + `' fill-opacity='0.3' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E")` },
+				indexColor: {backgroundColor: indexRgb }
 			});
 		}
 		this.setState(prevState => ({ expanded: !prevState.expanded }));
@@ -55,19 +64,19 @@ class ListItem extends Component {
 			console.log(scale);
 			if(scale >= 0.5) {
 				//speical scale for nice color interval in RGB color space from faint green to strong green
-				let R = 187 - 37 * scale;
+				let R = Math.floor(187 - 37 * scale);
 				let G = 237;
-				let B = 157 - 58 * scale;
+				let B = Math.floor(157 - 58 * scale);
 
-				return "rgba(" + R + "," + G + "," + B + ")";
+				return "rgb(" + R + "," + G + "," + B + ")";
 
 			} else if(scale < 0.5){
 				//speical scale for nice color interval in RGB color space from orange to red
 				let R = 237;
-				let G = 128 + 144 * scale;
+				let G = Math.floor(128 + 144 * scale);
 				let B = 99;
 
-				return "rgba(" + R + "," + G + "," + B + ")";
+				return "rgb(" + R + "," + G + "," + B + ")";
 			}
 
 		} else {
@@ -78,9 +87,16 @@ class ListItem extends Component {
 
 	setNotification(){
 		if (this.props.responseRate < 0.5) {
-			this.setState({dotStyle: styles.responseRateDot});
+			this.setState({ 
+				dotStyle: styles.responseRateDot,
+				responseRateColor: {color: "#FB765E"} 
+			});
 		} else {
 			this.setState({dotStyle: ""});
+		}
+
+		if(this.props.responseRate >= 0.75){
+			this.setState({ responseRateColor: {color: "rgb(187,237,157)"}  });
 		}
 	}
 
@@ -128,6 +144,15 @@ class ListItem extends Component {
 		}
 	}
 
+	//help function
+	rgb2hex(rgb){
+		rgb = rgb.match(/^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i);
+		return (rgb && rgb.length === 4) ?
+		("0" + parseInt(rgb[1],10).toString(16)).slice(-2) +
+		("0" + parseInt(rgb[2],10).toString(16)).slice(-2) +
+		("0" + parseInt(rgb[3],10).toString(16)).slice(-2) : '';
+	}
+
 
 	render() {
 
@@ -141,7 +166,7 @@ class ListItem extends Component {
 						<h4>{this.props.employees}</h4>
 					</div>
 				</div>
-				<div className={styles.score}> 
+				<div className={styles.score} style={this.state.indexBg} > 
 					<h2 className={styles.index} style={this.state.indexColor} >{this.state.index}</h2>
 					<div className={[styles.indexChange, this.state.indexChangeStyle].join(" ")} >
 						<h4 style={this.state.indexChangeColor} >{this.state.indexChange}</h4>
@@ -150,12 +175,14 @@ class ListItem extends Component {
 				</div>
 				<div className={styles.responseRate}>
 					<span>Response rate:</span>
-					<h4>{this.state.responseRate}</h4>
+					<h4 style={this.state.responseRateColor} >{this.state.responseRate}</h4>
 				</div>
 			</div>
 
 		)
 	}
 }
+
+
 
 export default ListItem;

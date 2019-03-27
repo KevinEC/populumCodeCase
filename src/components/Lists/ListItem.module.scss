@@ -17,6 +17,8 @@ $expandedScorePadding: 10px;
 	padding: $padding;
 	margin: $margin;
 
+}
+.container *{
 	transition: all 0.1s ease-out;
 }
 .container:hover{
@@ -86,9 +88,8 @@ $expandedScorePadding: 10px;
 	display: none;
 	width: calc(100%);
 	align-items: flex-end;
-	margin-top: 10px;
 	margin-left: -$margin;
-	border-top: 1px solid $grey;
+	//border-top: 1px solid $grey;
 	padding: 10px;
 	padding-bottom: 0;
 }
@@ -123,10 +124,15 @@ $expandedScorePadding: 10px;
 	justify-content: flex-start;
 }
 
+.expanded .texts{
+	padding-bottom: 10px;
+}
+
 .expanded .score{
 	width: 100%;
 	justify-content: center;
 	padding: $expandedScorePadding;
+	padding-bottom: $expandedScorePadding + 10;
 	margin-left: -$expandedScorePadding;
 }
 
@@ -134,6 +140,7 @@ $expandedScorePadding: 10px;
 	align-items: center;
 	justify-content: flex-end;
 	width: 100%;
+	margin-top: -20px;
 }
 
 .expanded .arrow{
@@ -155,11 +162,15 @@ $expandedScorePadding: 10px;
 	color: white;
 
 	margin: 5px;
-	margin-left: -10px;
+	margin-left: -13px;
 
 	border-radius: 100%;
 }
 .expanded .responseRate {
 	display: flex;
 	justify-content: space-between;
+}
+
+.expanded .responseRateDot{
+	
 }
