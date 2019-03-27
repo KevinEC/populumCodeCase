@@ -41,6 +41,7 @@ class List extends Component {
 
 		this.sortList("index");
 		const listItems = this.createList();
+		console.log(this.props.data);
 
 		let width = (100/this.state.width);
 

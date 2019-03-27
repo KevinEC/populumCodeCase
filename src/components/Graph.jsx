@@ -8,7 +8,7 @@ class Graph extends Component {
 	  super(props);
 	
 	  this.state = {
-	  	numSeparations: 5
+	  	numSeparations: 6
 	  };
 
 	  this.createLines = this.createLines.bind(this);
@@ -17,10 +17,10 @@ class Graph extends Component {
 	createLines(){
 
 		let lines = [];
-		let increment = 20;
+		let increment = (100/this.state.numSeparations);
 		let num = 0;
 		for(let i = 0; i <= this.state.numSeparations; i++) {
-			lines.push(<span className={styles.line} key={i}><span className={styles.lineNum}>{num}</span></span>);
+			lines.push(<span className={styles.line} key={i}><span className={styles.lineNum}>{Math.round(num)}</span></span>);
 			num += increment;
 		}
 		return lines;

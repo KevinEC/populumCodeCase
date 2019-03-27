@@ -1,18 +1,21 @@
 @import '../../variables.scss';
 
 $radius: 5px;
+$padding: 10px;
+$margin: 10px;
+
+$expandedScorePadding: 10px;
 
 .container{
 	display: flex;
 	flex-flow: row wrap;
 	align-items: flex-end;
-	justify-content: space-between;
 
 	border: 1px solid $grey;
 	border-radius: $radius;
 
-	padding: 10px;
-	margin: 10px;
+	padding: $padding;
+	margin: $margin;
 
 	transition: all 0.1s ease-out;
 }
@@ -48,8 +51,11 @@ $radius: 5px;
 
 .score{
 	display: flex;
+	flex-flow: row wrap;
 	align-items: flex-end;
 	justify-content: flex-end;
+
+	margin-left: auto;
 }
 .index{
 	font-size: 30px;
@@ -64,8 +70,8 @@ $radius: 5px;
 }
 .indexChange h4{
 	margin: 0;
-	font-weight: 400;
-	font-size: 14px;
+	font-weight: 600;
+	font-size: 10px;
 	display: none;
 }	
 .arrow{
@@ -76,24 +82,62 @@ $radius: 5px;
 .indexChangeNull{
 	display: none !important;
 }
+.responseRate{
+	display: none;
+	width: calc(100%);
+	align-items: flex-end;
+	margin-top: 10px;
+	margin-left: -$margin;
+	border-top: 1px solid $grey;
+	padding: 10px;
+	padding-bottom: 0;
+}
+
+.responseRate span{
+	font-weight: 400;
+	font-size: 12px;
+}
+.responseRate h4{
+	margin: 0;
+	font-size: 12px;
+}
+.responseRateDot{
+	width: 100%;
+	align-self: flex-start;
+}
+.responseRateDot div{
+	width: 5px;
+	height: 5px;
+	margin-right: -5px;
+	margin-top: -5px;
+	margin-left: auto;
+
+	border-radius: 100%;
+	background-color: #FB765E;
+}
 
 /* expanded styles */
 .expanded{
 	flex-flow: column wrap;
-	align-items:flex-start;
+	align-items: flex-start;
 	justify-content: flex-start;
 }
 
 .expanded .score{
-	margin: 10px auto;
+	width: 100%;
+	justify-content: center;
+	padding: $expandedScorePadding;
+	margin-left: -$expandedScorePadding;
 }
 
 .expanded .indexChange{
 	align-items: center;
+	justify-content: flex-end;
+	width: 100%;
 }
 
 .expanded .arrow{
-	width: 20px;
+	width: 18px;
 }
 
 .expanded .indexChange h4{
@@ -111,7 +155,11 @@ $radius: 5px;
 	color: white;
 
 	margin: 5px;
+	margin-left: -10px;
 
 	border-radius: 100%;
-	background-color: lightgreen;
+}
+.expanded .responseRate {
+	display: flex;
+	justify-content: space-between;
 }
