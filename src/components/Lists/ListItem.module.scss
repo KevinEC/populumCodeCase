@@ -25,10 +25,11 @@ $expandedScorePadding: 10px;
 	cursor: pointer;
 }
 .null{
-	background-color: $grey !important;
+	background-color: rgba($grey, 0.4) !important;
 }
 .null *{
 	color: lighten($fontBlack, 25%) !important;
+	opacity: 0.8;
 }
 .texts{
 	display: flex;

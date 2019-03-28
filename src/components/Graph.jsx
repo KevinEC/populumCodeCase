@@ -1,7 +1,14 @@
 import React, {Component} from "react";
 import styles from './Graph.module.scss';
 
+import DATA from "../assets/data";
+
 import Lists from "./Lists/Lists.jsx";
+import Chart from "./Chart.jsx";
+
+//import { Line } from "react-chartjs-2";
+
+
 
 class Graph extends Component {
 	constructor(props) {
@@ -30,16 +37,21 @@ class Graph extends Component {
 
 		const lines = this.createLines();
 
+
 		return(
 			<max>
 				<div className={styles.container} >
+					
+					<Chart data={DATA} />
+
 					<div className={styles.axisWrapper}>
+						<span className={styles.axisLabel} >index</span>
 						<span className={styles.axis } ></span>
 						<div className={styles.lines}>
 							{lines}
 						</div>
 					</div>
-					<Lists numDivs={this.state.numSeparations} />
+					<Lists numDivs={this.state.numSeparations} data={DATA}/>
 				</div>
 			</max>
 		)

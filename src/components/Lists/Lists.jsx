@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import styles from './Lists.module.scss';
 
-import DATA from "../../assets/data";
 
 import List from "./List.jsx";
 
@@ -61,7 +60,7 @@ class Lists extends Component {
 	render() {
 
 		//divide data by quality
-		this.divideByQuality(DATA);
+		this.divideByQuality(this.props.data);
 		// create react elemnts
 		const Lists = this.createLists();
 

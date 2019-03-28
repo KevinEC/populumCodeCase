@@ -16,6 +16,14 @@ $line-height: 20px;
 	display: block;
 	position: relative;
 }
+.axisLabel{
+	position: absolute;
+	right: 110px;
+	align-self: flex-end;
+	margin-top: -11px;
+	font-size: 16px;
+	font-weight: 100;
+}
 .lines{
 	display: flex;
 	justify-content: space-between;
